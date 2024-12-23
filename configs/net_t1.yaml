@@ -1,0 +1,21 @@
+in_chans: 3
+num_classes: 1000
+embed_dim: 64
+depths: [1, 2, 8, 2]
+mlp_ratio: 2
+n_div: 4
+patch_size: 4
+patch_stride: 4
+patch_size2: 2
+patch_stride2: 2
+patch_norm: True
+feature_dim: 1280
+drop_path_rate: 0.02
+layer_scale_init_value: 0
+norm_layer: BN
+act_layer: GELU
+fork_feat: True
+init_cfg: None
+pretrained: False
+pconv_fw_type: split_cat
+pretrain_path: model_pth/fasternet/fasternet_t1.pth

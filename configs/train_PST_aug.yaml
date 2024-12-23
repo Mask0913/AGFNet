@@ -1,0 +1,67 @@
+# model
+class_num: 5
+channels: 4
+backbone: fasternet
+model_name: s+t2
+exp: base+SPPM+UAFM
+mode: Train
+six_channels: True
+
+
+
+# dataset
+dataset: "PST"
+dataset_name: 'PST'
+dataset_path: ""
+rgb_root_folder: ""
+rgb_format:  '.png'
+gt_root_folder: ""
+gt_format: '.png'
+gt_transform: True
+x_root_folder: ""
+x_format: '.png'
+x_is_single_channel: True
+train_source: ''
+eval_source: ''
+test_source: ''
+is_test: False
+class_names: ['Background', 'Extinguisher', 'Backpack', 'Hand-Drill', 'Survivor']
+num_classes: 5
+background: 0
+image_height: 720
+image_width: 1280
+norm_mean: [0.485, 0.456, 0.406]
+norm_std: [0.229, 0.224, 0.225]
+train_scale_array: [0.5, 0.75, 1.0, 1.25, 1.5, 1.75]
+
+random_mosaic: False
+mosaic_size: 48
+num_mosaics: 64
+
+batch_size: 8
+num_workers: 4
+
+
+# train
+iter: 50000
+mixed_precision: False
+log_path: log2/
+save_log: True
+
+#loss
+multi_loss: True
+loss_type: CrossEntropyLoss
+ignore_label: 255
+thresh: 0.5
+min_kept: 10000
+
+# optimizer
+optimizer: AdamW
+lr: 0.0001
+momentum: 0.9
+weight_decay: 0.005
+lr_scheduler: poly
+poly_power: 0.9
+warmup: True
+warmup_iters: 1000
+warmup_factor: 0.1

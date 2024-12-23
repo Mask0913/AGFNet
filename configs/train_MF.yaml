@@ -1,0 +1,48 @@
+# model
+class_num: 9
+channels: 4
+backbone: fasternet
+model_name: t2+t1
+exp: base+SPPM+UAFM
+mode: Train
+# pretrain_path: log2/t2+t1_all/miou54.818368938234116iter4800.pth
+
+
+
+# dataset
+dataset: 'MF'
+data_path: dataimg/MF
+num_workers: 8
+batch_size: 4
+train_min_size: 320
+train_max_size: 960
+train_crop_size: [240,320]
+val_input_size: [480,640]
+val_label_size: [480,640]
+aug_mode: randaug_reduced
+train_split: train
+with_thermal: True
+
+# train
+iter: 20000
+mixed_precision: False
+log_path: log2/t2+t1_randaug_reduced
+save_log: True
+
+#loss
+multi_loss: True
+loss_type: BootstrappedCELoss
+ignore_label: 255
+thresh: 0.5
+min_kept: 10000
+
+# optimizer
+optimizer: AdamW
+lr: 0.004
+momentum: 0.9
+weight_decay: 0.0025
+lr_scheduler: poly
+poly_power: 0.9
+warmup: True
+warmup_iters: 600
+warmup_factor: 0.1
